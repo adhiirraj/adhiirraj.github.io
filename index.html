@@ -1,11 +1,11 @@
 <h1>PicoCTF 2026 Solutions</h1>
 <h2>Binary Digits</h2>
 <p>This file doesn't look like much... just a bunch of 1s and 0s. But maybe it's not just random noise. Can you recover anything meaningful from this?
-Download the file here.</p>
+Download the file <a href="https://challenge-files.picoctf.net/c_plain_mesa/8fa300f2ce84eca8cf2b18d1bd0c9cd92c888b09d838e2462c4edd30d951da59/digits.bin">here</a>.</p>
 <h3>Solution</h3>
 <p>We see the head of the file to see that it's a continuous stream of binary digits</p>
 <code>% head digits.bin
-1111111111011000111111111110000000000000000100000100101001000110010010010100011000000000000000010000000100000000000000000000000100000000000000010000000000000000111111111101101100000000010000110000000000001000000001100000011000000111000001100000010100001...</code>
+111111111101100011111111111000000000000000010000010010100100011001001001010001...</code>
 <p>We need to split this into 8-bit chunks and then convert binary to decimal</p>
 <code>data = open("digits.bin").read() #Loads the file
   out = bytes(int(data[i:i+8], 2) for i in range(0, len(data), 8)) #Splits it into 8-bit chunks, then converts binary to decimal 
