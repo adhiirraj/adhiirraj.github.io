@@ -7,9 +7,9 @@ Download the file <a href="https://challenge-files.picoctf.net/c_plain_mesa/8fa3
 <code>% head digits.bin
 111111111101100011111111111000000000000000010000010010100100011001001001010001...</code>
 <p>We need to split this into 8-bit chunks and then convert binary to decimal</p>
-<code>data = open("digits.bin").read() #Loads the file
-  out = bytes(int(data[i:i+8], 2) for i in range(0, len(data), 8)) #Splits it into 8-bit chunks, then converts binary to decimal 
-  open("output.bin", "wb").write(out) #Writes the output file</code>
-  <p>Running this script gives us an image</p>
-  <img src=output.jpg>
-  <p>Which is the flag.</p>
+<code>data = open("digits.bin").read() #Loads the file</code>
+<code>out = bytes(int(data[i:i+8], 2) for i in range(0, len(data), 8)) #Splits it into 8-bit chunks, then converts binary to decimal </code>
+<code>open("output.bin", "wb").write(out) #Writes the output file</code>
+<p>Running this script gives us an image</p>
+<img src=output.jpg>
+<p>Which is the flag.</p>
