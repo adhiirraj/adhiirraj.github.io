@@ -1,15 +1,44 @@
 <h1>PicoCTF 2026 Solutions</h1>
 <h2>Binary Digits</h2>
-<p>This file doesn't look like much... just a bunch of 1s and 0s. But maybe it's not just random noise. Can you recover anything meaningful from this?
-Download the file <a href="https://challenge-files.picoctf.net/c_plain_mesa/8fa300f2ce84eca8cf2b18d1bd0c9cd92c888b09d838e2462c4edd30d951da59/digits.bin">here</a>.</p>
+<p>This file doesn't look like much... just a bunch of 1s and 0s. But maybe it's not just random noise. Can you recover anything meaningful from this?</p>
+<p>Download the file <a href="https://challenge-files.picoctf.net/c_plain_mesa/8fa300f2ce84eca8cf2b18d1bd0c9cd92c888b09d838e2462c4edd30d951da59/digits.bin">here</a>.</p>
 <h3>Solution</h3>
 <p>We see the head of the file to see that it's a continuous stream of binary digits</p>
 <code>% head digits.bin
 111111111101100011111111111000000000000000010000010010100100011001001001010001...</code>
 <p>We need to split this into 8-bit chunks and then convert binary to decimal</p>
-<code>data = open("digits.bin").read() #Loads the file</code>
-<code>out = bytes(int(data[i:i+8], 2) for i in range(0, len(data), 8)) #Splits it into 8-bit chunks, then converts binary to decimal </code>
+<code>data = open("digits.bin").read() #Loads the file</code><br>
+<code>out = bytes(int(data[i:i+8], 2) for i in range(0, len(data), 8)) #Splits it into 8-bit chunks, then converts binary to decimal </code><br>
 <code>open("output.bin", "wb").write(out) #Writes the output file</code>
 <p>Running this script gives us an image</p>
 <img src=output.jpg>
-<p>Which is the flag.</p>
+<p>Which is the flag</p>
+<br><br>
+<h2>Timeline 0</h2>
+<p>Can you find the flag in this disk image? Wrap what you find in the picoCTF flag format.</p>
+<p>Download the disk image <a href="https://challenge-files.picoctf.net/c_plain_mesa/aa1f8ba93409887e081435732d7037c45b30a8442853bf07c9e84fe4d0e0bc19/partition4.img.gz">here</a>.</p>
+<p>Hint: Create a Sleuthkit MAC timeline!</p>
+<p>Sloppy timestomping can yield strange (very old) timestamps</p>
+<p>We start by unzipping the downloaded file (<code>gunzip partition4.img.gz</code>)</p>
+<p>We check its file type by <code> file partition4.img </code></p>
+<code>partition4.img: Linux rev 1.0 ext4 filesystem data, UUID=7a00e9da-98f8-4f0f-b257-95edf422d902 (extents) (64bit) (large files) (huge files)</code>
+<p>As we are instructed, we create a Sleuthkit MAC timeline.</p>
+<code>% fls -m "/" -r partition4.img > body.txt</code><br>
+<code>% mactime -b body.txt -d > timeline.csv</code>
+<code>% head timeline.csv
+Date,Size,Type,Mode,UID,GID,Meta,File Name <br>
+Tue Jan 01 1985 17:00:00,41,macb,r/rrw-r--r--,0,0,4945,"/bin/bcab" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,64994,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,64995,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,64996,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,64997,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,64998,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,64999,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,65000,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub" <br>
+Mon Oct 18 2021 17:54:17,451,ma..,r/rrw-r--r--,0,0,65001,"/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub" <br>
+%</code>
+<p>Using hint 2, we observe the suspicious /bin/bcab file that was modified in 1985</p>
+<p>Opening that file in Autopsy, we find NzFtMzExbjNfMHU3MTEzcl9oM3JfNDNhMmU3YWYK</p>
+<img src=ss2.jpg>
+<p>Decoding it using <code>echo -n "NzFtMzExbjNfMHU3MTEzcl9oM3JfNDNhMmU3YWYK" | base64 -d</code>, we get<code>71m311n3_0u7113r_h3r_43a2e7af</code></p>
+<p>Hence, picoCTF{71m311n3_0u7113r_h3r_43a2e7af} is the flag</p>
