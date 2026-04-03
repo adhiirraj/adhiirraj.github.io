@@ -11,5 +11,5 @@ Download the file here.</p>
   out = bytes(int(data[i:i+8], 2) for i in range(0, len(data), 8)) #Splits it into 8-bit chunks, then converts binary to decimal 
   open("output.bin", "wb").write(out) #Writes the output file</code>
   <p>Running this script gives us an image</p>
-  <img src=output.bin>
+  <img src=output.jpg>
   <p>Which is the flag.</p>
