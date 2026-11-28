@@ -1,0 +1,20 @@
+import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = fileURLToPath(new URL('.', import.meta.url));
+
+export default defineConfig({
+  base: './',
+  build: {
+    rollupOptions: {
+      input: {
+        home: resolve(root, 'index.html'),
+        projects: resolve(root, 'projects.html'),
+        filmmaking: resolve(root, 'filmmaking.html'),
+        albumwall: resolve(root, 'albumwall.html'),
+        credits: resolve(root, 'credits.html'),
+      },
+    },
+  },
+});
