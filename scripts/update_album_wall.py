@@ -20,7 +20,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlsplit
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -139,9 +139,12 @@ def build_album_list(tracks: list[dict[str, str]]) -> list[dict[str, str]]:
         if not track:
             continue
         # Spotify returns the same thumbnail URL for tracks on the same album.
-        if track["image"] in seen_covers:
+        # Spotify can serve the same artwork ID from different CDN hostnames.
+        # Deduplicate on the artwork path, not the full URL.
+        artwork_id = urlsplit(track["image"]).path.rsplit("/", 1)[-1]
+        if artwork_id in seen_covers:
             continue
-        seen_covers.add(track["image"])
+        seen_covers.add(artwork_id)
         albums.append(track)
 
     if not albums:
