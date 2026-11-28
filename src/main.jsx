@@ -129,12 +129,12 @@ function AlbumWall() {
   React.useEffect(() => {
     const controller = new AbortController();
 
-    fetch(\`${import.meta.env.BASE_URL}albumwall.json\`, {
+    fetch(`${import.meta.env.BASE_URL}albumwall.json`, {
       cache: 'no-store',
       signal: controller.signal,
     })
       .then(response => {
-        if (!response.ok) throw new Error(\`Album data request failed: \${response.status}\`);
+        if (!response.ok) throw new Error(`Album data request failed: ${response.status}`);
         return response.json();
       })
       .then(data => {
@@ -164,8 +164,8 @@ function AlbumWall() {
       <div className="album-wall-grid">
         {albums.map(album => (
           <figure key={album.id}>
-            <a href={album.spotifyUrl} target="_blank" rel="noopener noreferrer" aria-label={\`Open \${album.title} on Spotify\`}>
-              <img src={album.image} alt={\`\${album.title} by \${album.artist}\`} loading="lazy" />
+            <a href={album.spotifyUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${album.title} on Spotify`}>
+              <img src={album.image} alt={`${album.title} by ${album.artist}`} loading="lazy" />
             </a>
             <figcaption>
               <strong>{album.title}</strong>
