@@ -111,7 +111,19 @@ function SimplePage({ title, description, current }) {
       <Navigation current={current} />
       {title === 'Scrapbook' ? <main className="blank-page" aria-label="Scrapbook" /> : (
         title === 'Album Wall' ? <AlbumWall /> :
-        <main className="simple-page">
+        title === 'Projects' ? <main className="projects-page">
+          <h1>Projects</h1>
+          <article className="unisteno-entry">
+            <img className="unisteno-preview" src="/unisteno.png" alt="UniSteno steganography toolkit interface" />
+            <div className="unisteno-copy">
+              <p className="project-kicker">Featured project</p>
+              <h2><a href="https://unisteno.adhiirraj.me/" target="_blank" rel="noopener noreferrer">UniSteno <span aria-hidden="true">↗</span></a></h2>
+              <p className="project-subtitle">Universal Steganography Toolkit</p>
+              <p className="project-description">UniSteno automatically detects file types—including images, audio, video, and documents—and applies tailored steganalysis such as LSB checks, metadata anomaly scans, and appended-data detection. It also supports embedding or extracting hidden data.</p>
+              <a className="project-visit" href="https://unisteno.adhiirraj.me/" target="_blank" rel="noopener noreferrer">Visit UniSteno</a>
+            </div>
+          </article>
+        </main> : <main className="simple-page">
           <h1>{title}</h1>
           {description && <p>{description}</p>}
         </main>

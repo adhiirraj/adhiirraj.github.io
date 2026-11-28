@@ -272,13 +272,39 @@ main {
   text-align: center;
 }
 
+/* Shared heading and placement for every non-home section page. */
+.simple-page,
+.projects-page,
+.album-wall-page { padding-top: clamp(4rem, 12vh, 8rem); }
+.simple-page h1,
+.projects-page > h1,
+.album-wall-page > h1 {
+  margin: 0 0 2rem;
+  text-align: center;
+  font-family: "Asimovian", sans-serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
 .simple-page p {
   color: #ffffff;
   font-size: 0.9rem;
 }
 
-.album-wall-page { padding-top: clamp(2rem, 6vh, 4rem); padding-bottom: 4rem; }
-.album-wall-page h1 { margin: 0 0 2rem; text-align: center; font-family: "Asimovian", sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; }
+.projects-page { min-height: calc(100vh - 4rem); padding-top: clamp(3rem, 9vh, 6rem); }
+.unisteno-entry { display: grid; grid-template-columns: minmax(10rem, .8fr) minmax(0, 1.4fr); align-items: center; gap: clamp(1.25rem, 4vw, 2.5rem); max-width: 920px; margin: 0 auto; padding: clamp(1rem, 3vw, 1.5rem); color: #e8eef8; font-family: "Noto Sans Mono", monospace; background: linear-gradient(135deg, rgba(7,45,15,.94) 0%, rgba(11,15,26,.94) 100%); box-shadow: 0 8px 36px rgba(0,0,0,.32), inset 0 0 30px rgba(255,255,255,.025); transition: transform .2s ease, filter .2s ease; }
+.unisteno-entry:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.unisteno-preview { display: block; width: 100%; height: 100%; max-height: 20rem; aspect-ratio: 1; object-fit: cover; object-position: top center; }
+.unisteno-copy { min-width: 0; }
+.project-kicker { margin: 0 0 .8rem; color: #fff; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+.unisteno-entry h2 { margin: 0; font-family: "Asimovian", sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; }
+.unisteno-entry h2 a { color: #fff; text-decoration: none; }
+.project-subtitle { margin: .55rem 0 1rem; color: #fff; font-size: .88rem; }
+.project-description { max-width: 65ch; margin: 0; color: #fff; font-size: .82rem; line-height: 1.8; }
+.project-visit { display: inline-block; margin-top: 1.4rem; color: #fff; font-size: .8rem; }
+
+.album-wall-page { padding-bottom: 4rem; }
 .album-wall-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
 .album-wall-grid figure { min-width: 0; margin: 0; }
 .album-wall-grid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
@@ -354,6 +380,8 @@ main {
   }
 
   .album-wall-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+  .unisteno-entry { grid-template-columns: 1fr; }
+  .unisteno-preview { max-height: none; aspect-ratio: 16 / 10; }
 
   .skill-columns { grid-template-columns: 1fr; gap: 1.5rem; }
   .logo-strip { gap: .8rem; }
