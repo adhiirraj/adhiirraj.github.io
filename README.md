@@ -34,3 +34,6 @@ public oEmbed artwork endpoint. No Spotify developer credentials are required.
 The repository's **Settings → Pages → Build and deployment → Source** must be
 set to **GitHub Actions**. The workflow uses the repository's `GITHUB_TOKEN`
 with `contents: write` to commit refreshed JSON when it changes.
+
+
+GitHub Pages is deployed from the `dist/` directory by `.github/workflows/pages.yml`. Keep the Pages source set to **GitHub Actions**.
