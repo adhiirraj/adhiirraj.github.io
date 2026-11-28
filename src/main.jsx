@@ -120,29 +120,65 @@ function SimplePage({ title, description, current }) {
   );
 }
 
-const playlistTracks = [
-  ['Love Demons','Peter Cat Recording Co.'],['Irradon','Lifafa'],['Sleep on the Left Side','Cornershop'],['Lover, You Should\'ve Come Over','Jeff Buckley'],['Flowers R. Blooming','Peter Cat Recording Co.'],['Tohfa','Lifafa'],['All My Friends Are Sluts','Begum'],['Ghir Ghir','Advaita'],['Connexion','Peter Cat Recording Co.'],['Laash','Lifafa'],['We Never Fight (Cause We Never Talk)','Jamblu'],['Mausambi Drip','Dhanji'],['Vishnu','Peter Cat Recording Co.'],['Wahin Ka Wahin','Lifafa'],['Shaam Tanha','Agnee'],['Drops of Earth','Advaita'],['Happiness','Peter Cat Recording Co.'],['Mann Ki Baat','Lifafa'],['Aatish','Nanku'],['Double Decker Eyelashes','Cornershop'],['Flies','Peter Cat Recording Co.'],['Nikamma','Lifafa'],['MIRZA','Arjun Rana'],['Rani','MALFNKTION'],['Naina Morey','Somlata And The Aces'],['Must Get Out','Begum'],['Memory Box','Peter Cat Recording Co.'],['Kaafizyada','E Nanku'],['Jahanpana','Dizlaw'],['Sunset by the Vembanad','Shashwat Bulusu']
-];
 
 function AlbumWall() {
   const [albums, setAlbums] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [failed, setFailed] = React.useState(false);
+
   React.useEffect(() => {
-    let cancelled = false;
-    Promise.all(playlistTracks.map(async ([track, artist]) => {
-      try {
-        const query = encodeURIComponent(`${track} ${artist}`);
-        const response = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=5`);
-        const data = await response.json();
-        const found = data.results?.find(item => item.trackName?.toLowerCase() === track.toLowerCase()) || data.results?.[0];
-        return found && { key: found.collectionId || found.trackId, name: found.collectionName || track, artist: found.artistName || artist, image: found.artworkUrl100?.replace('100x100bb', '600x600bb') };
-      } catch { return null; }
-    })).then(results => {
-      if (!cancelled) setAlbums(results.filter(Boolean).filter((album, index, all) => all.findIndex(other => other.key === album.key) === index));
-    });
-    return () => { cancelled = true; };
+    const controller = new AbortController();
+
+    fetch(\`${import.meta.env.BASE_URL}albumwall.json\`, {
+      cache: 'no-store',
+      signal: controller.signal,
+    })
+      .then(response => {
+        if (!response.ok) throw new Error(\`Album data request failed: \${response.status}\`);
+        return response.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data.tracks)) throw new Error('Album data has an invalid format');
+        setAlbums(data.tracks);
+        setFailed(false);
+      })
+      .catch(error => {
+        if (error.name !== 'AbortError') {
+          console.error('Could not load the Spotify album wall:', error);
+          setFailed(true);
+        }
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+
+    return () => controller.abort();
   }, []);
-  return <main className="album-wall-page"><h1>Music I love right now</h1><div className="album-wall-grid">{albums.map(album => <figure key={album.key}><img src={album.image} alt={`${album.name} by ${album.artist}`} loading="lazy"/><figcaption><strong>{album.name}</strong><span>{album.artist}</span></figcaption></figure>)}</div><a className="playlist-link" href="https://open.spotify.com/playlist/37i9dQZF1Epp7akT4x0KST?si=c3205e8284f3484a" target="_blank" rel="noreferrer">Open playlist on Spotify</a></main>;
+
+  return (
+    <main className="album-wall-page">
+      <h1>Music I love right now</h1>
+      {loading && <p className="album-wall-message">Loading album covers…</p>}
+      {!loading && failed && <p className="album-wall-message">The album wall could not be loaded. Please try again later.</p>}
+      {!loading && !failed && albums.length === 0 && <p className="album-wall-message">The playlist is being synced. Check back shortly.</p>}
+      <div className="album-wall-grid">
+        {albums.map(album => (
+          <figure key={album.id}>
+            <a href={album.spotifyUrl} target="_blank" rel="noopener noreferrer" aria-label={\`Open \${album.title} on Spotify\`}>
+              <img src={album.image} alt={\`\${album.title} by \${album.artist}\`} loading="lazy" />
+            </a>
+            <figcaption>
+              <strong>{album.title}</strong>
+              <span>{album.artist}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <a className="playlist-link" href="https://open.spotify.com/playlist/37i9dQZF1Epp7akT4x0KST" target="_blank" rel="noreferrer">Open playlist on Spotify</a>
+    </main>
+  );
 }
+
 
 const logoSkills = [
   ['Python', 'python'], ['C', 'c'], ['JavaScript', 'javascript'], ['Bash', 'gnubash'],
