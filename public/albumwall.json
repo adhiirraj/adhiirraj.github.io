@@ -1,7 +1,7 @@
 {
   "playlistId": "37i9dQZF1Epp7akT4x0KST",
   "playlistUrl": "https://open.spotify.com/playlist/37i9dQZF1Epp7akT4x0KST",
-  "updatedAt": "2026-11-28T11:24:46Z",
+  "updatedAt": "2026-11-28T11:25:45Z",
   "tracks": [
     {
       "id": "1Bc7SsZAi9Z2beccQmdJUs",
@@ -29,14 +29,14 @@
       "title": "Lover, You Should've Come Over",
       "artist": "Jeff Buckley",
       "spotifyUrl": "https://open.spotify.com/track/6Jv7kjGkhY2fT4yuBF3aTz",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02afc2d1d2c8703a10aeded0af"
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02afc2d1d2c8703a10aeded0af"
     },
     {
       "id": "5JInU1luIwpnMRU2DDollP",
       "title": "Flowers R. Blooming",
       "artist": "Peter Cat Recording Co.",
       "spotifyUrl": "https://open.spotify.com/track/5JInU1luIwpnMRU2DDollP",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023db57df610057ad23fd54de1"
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023db57df610057ad23fd54de1"
     },
     {
       "id": "18qVucr6e4ZFeoXAbIiKTC",
@@ -50,7 +50,7 @@
       "title": "All My Friends Are Sluts",
       "artist": "Begum",
       "spotifyUrl": "https://open.spotify.com/track/0Z2Cwcf8Yc2RgIAkPb5kZO",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021753ec3c9892c5667b45267e"
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021753ec3c9892c5667b45267e"
     },
     {
       "id": "56iw7QosAXwrOfu5WLQNSe",
@@ -60,18 +60,18 @@
       "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b4c9a28f180cae2dbc247184"
     },
     {
-      "id": "7LaTH0QGMhBSTvbHpY2wqR",
-      "title": "Laash",
-      "artist": "Lifafa",
-      "spotifyUrl": "https://open.spotify.com/track/7LaTH0QGMhBSTvbHpY2wqR",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02631595248a8dcbd3fda86368"
+      "id": "34WebRMUfEWDgaLEZUMFkG",
+      "title": "Connexion",
+      "artist": "Peter Cat Recording Co.",
+      "spotifyUrl": "https://open.spotify.com/track/34WebRMUfEWDgaLEZUMFkG",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023db57df610057ad23fd54de1"
     },
     {
       "id": "0jf9wrQ3cQ6FqgbZoSqGxp",
       "title": "We Never Fight (Cause We Never Talk)",
       "artist": "Jamblu, Anand Viankara",
       "spotifyUrl": "https://open.spotify.com/track/0jf9wrQ3cQ6FqgbZoSqGxp",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027b9c17062cbe01d1c5c71230"
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e027b9c17062cbe01d1c5c71230"
     },
     {
       "id": "7o2YhfaZZE3eEV7GV5kFpc",
@@ -88,25 +88,32 @@
       "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02db88abf0fe30030cf30c3a87"
     },
     {
+      "id": "4ezXXcPdzmOwjfBTR3m2Zg",
+      "title": "Wahin Ka Wahin",
+      "artist": "Lifafa",
+      "spotifyUrl": "https://open.spotify.com/track/4ezXXcPdzmOwjfBTR3m2Zg",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02631595248a8dcbd3fda86368"
+    },
+    {
       "id": "5V6XcXBrCGI6JOeYr4Uyo3",
       "title": "Shaam Tanha",
       "artist": "Agnee",
       "spotifyUrl": "https://open.spotify.com/track/5V6XcXBrCGI6JOeYr4Uyo3",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02310388fc9ed4739ae25919d9"
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02310388fc9ed4739ae25919d9"
     },
     {
-      "id": "5dRDBdn5O0oV4JzqVeWC5V",
-      "title": "Happiness",
-      "artist": "Peter Cat Recording Co.",
-      "spotifyUrl": "https://open.spotify.com/track/5dRDBdn5O0oV4JzqVeWC5V",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c5441ebc8d00c48e3ab530b0"
+      "id": "3YYU93Dm5kvCT01DC3CAVf",
+      "title": "Drops of Earth",
+      "artist": "Advaita",
+      "spotifyUrl": "https://open.spotify.com/track/3YYU93Dm5kvCT01DC3CAVf",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b4c9a28f180cae2dbc247184"
     },
     {
       "id": "2PeahSGn2ypPGCFtUGOGrA",
       "title": "Aatish",
       "artist": "Nanku",
       "spotifyUrl": "https://open.spotify.com/track/2PeahSGn2ypPGCFtUGOGrA",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02e0a00b1ea6cc3be570f0c0c7"
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e0a00b1ea6cc3be570f0c0c7"
     },
     {
       "id": "7a0ldtXayvWdM98FOIOe5c",
@@ -127,7 +134,7 @@
       "title": "MIRZA",
       "artist": "Arjun Rana, Faizan",
       "spotifyUrl": "https://open.spotify.com/track/6YaFX7Fs3PApnvTHiPLQrr",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cad6356ad6e36c9a7ce118b7"
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02cad6356ad6e36c9a7ce118b7"
     },
     {
       "id": "5d1IthC1D1CaajaQ0Vh8s3",
@@ -162,7 +169,7 @@
       "title": "Jahanpana",
       "artist": "Dizlaw",
       "spotifyUrl": "https://open.spotify.com/track/0LpmnhyUEvfA83iEj3idG0",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0297a1524bb9a9f49e6ef762d5"
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0297a1524bb9a9f49e6ef762d5"
     },
     {
       "id": "4c2d98NJxRAvvERrZEdaB9",
